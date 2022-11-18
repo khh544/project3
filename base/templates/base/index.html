@@ -449,108 +449,110 @@
             <!--//github-graph-->
           </div>
         </div>
-      </div>
-      <div class="card text-center">
-        <h5 id="card-header" class="card-header">음악감상</h5>
-        <div id="music" class="card-body">
-          <video src="{% static 'music/bgm.mp4' %}" controls="controls" loop="loop" autoplay="autoplay" volum="volum">이 브라우저는 재생할 수 없습니다.</video>
+        <div class="card text-center mt-3">
+          <h5 id="card-header" class="card-header">음악감상</h5>
+          <div id="music" class="card-body">
+            <video src="{% static 'music/bgm.mp4' %}" controls="controls" loop="loop" autoplay="autoplay" volum="volum">이 브라우저는 재생할 수 없습니다.</video>
+          </div>
         </div>
       </div>
-
-      <footer class="footer text-center py-2 theme-bg-dark">
-        <small class="copyright">Designed with
-          <span class="sr-only">love</span>
-          <i class="fas fa-heart" style="color: #fb866a"></i>
-          by
-          <a href="https://github.com/khh544" target="_blank">김현수</a>
-          for developers</small>
-      </footer>
+      <!--//item-->
     </div>
-  {% endblock content %}
-  {% block style %}
-    <script type="text/javascript">
-      function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-          var cookies = document
-            .cookie
-            .split(';');
-          for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-              break;
-            }
+
+    <footer class="footer text-center py-2 theme-bg-dark mt-3">
+      <small class="copyright">Designed with
+        <span class="sr-only">love</span>
+        <i class="fas fa-heart" style="color: #fb866a"></i>
+        by
+        <a href="https://github.com/khh544" target="_blank">김현수</a>
+        for developers</small>
+    </footer>
+  </div>
+{% endblock content %}
+{% block style %}
+  <script type="text/javascript">
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        var cookies = document
+          .cookie
+          .split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
           }
         }
-        return cookieValue;
       }
-      var csrftoken = getCookie('csrftoken');
+      return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
 
-      var cssFile = "{% static 'css' %}"
+    var cssFile = "{% static 'css' %}"
 
-      function swapStyles(sheet) {
-        document
-          .getElementById('mystylesheet')
-          .href = cssFile + '/' + sheet
-        localStorage.setItem('theme', sheet)
+    function swapStyles(sheet) {
+      document
+        .getElementById('mystylesheet')
+        .href = cssFile + '/' + sheet
+      localStorage.setItem('theme', sheet)
 
-        updateTheme(sheet)
-      }
+      updateTheme(sheet)
+    }
 
-      function loadSettings() {
-        //Call data and set local storage
+    function loadSettings() {
+      //Call data and set local storage
 
-        var url = "{% url 'user_settings' %}"
-        fetch(url, {
-          method: 'GET',
-          headers: {
-            'Content-type': 'application/json'
-          }
-        })
-          .then((response) => response.json())
-          .then(function (data) {
-
-            console.log('Data:', data)
-
-            var theme = data.value;
-
-            if (theme == 'light.css' || null) {
-              swapStyles('light.css')
-            } else if (theme == 'dark.css') {
-              swapStyles('dark.css')
-            }
-
-          })
-
-      }
-
-      loadSettings()
-
-      function updateTheme(theme) {
-        var url = "{% url 'update_theme' %}"
-        fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-            'X-CSRFToken': csrftoken
-          },
-          body: JSON.stringify({'theme': theme})
-        })
-      }
-      GitHubCalendar(".calendar", "khh544");
-
-      // or enable responsive functionality:
-      GitHubCalendar(".calendar", "khh544", {responsive: true});
-
-      // Use a proxy
-      GitHubCalendar(".calendar", "khh544", {
-        proxy(username) {
-          return fetch(`https://your-proxy.com/github?user=${username}`)
+      var url = "{% url 'user_settings' %}"
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json'
         }
-      }).then(r => r.text())
-    </script>
-  {% endblock style %}
+      })
+        .then((response) => response.json())
+        .then(function (data) {
+
+          console.log('Data:', data)
+
+          var theme = data.value;
+
+          if (theme == 'light.css' || null) {
+            swapStyles('light.css')
+          } else if (theme == 'dark.css') {
+            swapStyles('dark.css')
+          }
+
+        })
+
+    }
+
+    loadSettings()
+
+    function updateTheme(theme) {
+      var url = "{% url 'update_theme' %}"
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify({'theme': theme})
+      })
+    }
+    GitHubCalendar(".calendar", "khh544");
+
+    // or enable responsive functionality:
+    GitHubCalendar(".calendar", "khh544", {responsive: true});
+
+    // Use a proxy
+    GitHubCalendar(".calendar", "khh544", {
+      proxy(username) {
+        return fetch(`https://your-proxy.com/github?user=${username}`)
+      }
+    }).then(r => r.text())
+  </script>
+{% endblock style %}
 
 </html>
