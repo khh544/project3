@@ -128,3 +128,7 @@ hr{
     display: block;
     color: rgb(255, 255, 255);
 }
+
+#music {
+	width: 700px;
+  }
