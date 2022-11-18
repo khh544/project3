@@ -3,7 +3,9 @@ body{
 }
 
 #back{
-	background-image: url("https://cdn.pixabay.com/photo/2019/08/19/15/13/eiffel-tower-4416700__340.jpg");
+	background-image: url("https://whatifgaming.com/wp-content/uploads/2022/05/Gazing-at-the-City-scaled.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 h1, h2, h3, h4, h5, h6{
