@@ -54,8 +54,6 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
 
     'rest_framework',
-    'app',
-    'base',
 
 
 ]
@@ -124,9 +122,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -139,6 +137,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = "/home/kimhyunsoo/project3/static"
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 STATIC_URL = '/static/'
