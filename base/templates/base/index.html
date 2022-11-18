@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+  <head>
+
+    <title>개발 블로그</title>
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- FontAwesome JS -->
+    <script defer="defer" src="static/fontawesome/js/all.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="static/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="static/css"/>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="static/plugins/bootstrap/css/bootstrap.min.css"/>
+
+    <link id="mystylesheet" rel="stylesheet" type="text/css" href="{% static 'css/light.css' %}">
+    <link id="theme-style" rel="stylesheet" href="static/css/theme-1.css"/>
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="static/css/styles.css"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/octicons@4.4.0/build/font/octicons.css">
+    <link rel="stylesheet" href="https://unpkg.com/github-activity-feed@latest/dist/github-activity.min.css">
+
+    <script type="text/javascript" src="https://unpkg.com/mustache@4.2.0/mustache.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/github-activity-feed@latest/dist/github-activity.min.js"></script>
+
+    <!-- Include the library. -->
+    <script src="static/css/github-calendar.min.js"></script>
+
+    <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
+    <link rel="stylesheet" href="static/css/github-calendar-responsive.css"/>
+  </head>
+
+</head>
+
+{% block content %}
+  <div class="container">
+    <header class="header text-center" id="header">
+      <h1 class="blog-name pt-lg-4 mb-0">
+        <a class="no-text-decoration" href="index.html">Hyunsoo's Blog</a>
+      </h1>
+
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navigation" class="collapse navbar-collapse flex-column">
+          <div class="profile-section pt-3 pt-lg-0">
+            <img class="profile-image mb-3 rounded-circle mx-auto" src="static/images/profile.png" alt="image"/>
+
+            <div class="bio mb-3">
+              Hi, my name is hyunsoo kim.
+              <br>I am a new developer who aims to become a professional developer.<br/>
+              <a href="about.html">Find out more about me</a>
+            </div>
+            <!--//bio-->
+            <ul class="social-list list-inline py-3 mx-auto">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-github-alt fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-stack-overflow fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-codepen fa-fw"></i>
+                </a>
+              </li>
+            </ul>
+            <!--//social-list-->
+            <hr/>
+          </div>
+          <!--//profile-section-->
+
+          <ul class="navbar-nav flex-column text-start">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">
+                <i class="fas fa-home fa-fw me-2"></i>Blog Home
+                <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fas fa-user fa-fw me-2"></i>About Me</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="row">
+        <div id="box">
+          <button class="btn btn-light" onclick="swapStyles('light.css')">Light Mode</button>
+          <button class="btn btn-dark" onclick="swapStyles('dark.css')">Dark Mode</button>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="main-wrapper">
+    <section class="bars cta-section theme-bg-light py-5">
+      <div class="container text-center single-col-max-width">
+        <h2 class="heading">나만의 개발 포트폴리오</h2>
+        <div class="intro">
+          문의는 아래에 본인의 이메일 작성을 부탁드립니다.
+        </div>
+
+        <div class="single-form-max-width pt-3 mx-auto">
+          <form class="signup-form row g-2 g-lg-2 align-items-center">
+            <div class="col-12 col-md-9">
+              <label class="sr-only" for="semail">당신의 Email</label>
+              <input type="email" id="semail" name="semail1" class="form-control me-md-1 semail" placeholder="예: pig4396@naver.com"/>
+            </div>
+            <div class="col-12 col-md-2">
+              <button type="submit" class="btn btn-primary">보내기</button>
+            </div>
+          </form>
+          <!--//signup-form-->
+        </div>
+        <!--//single-form-max-width-->
+      </div>
+      <!--//container-->
+    </section>
+    <div class="container">
+      <div class="card mt-3">
+        <img src="/static/images/profile2.jpeg" class="img-fluid" alt="프로파일">
+        <h3 id="card-header" class="card-header">나의 대해서</h3>
+        <div class="card-body">
+          <div class="card-text">저는 어렸을때부터, 게임모드 및 개발에 흥미를 두고있었습니다.
+            <br>
+            하지만, 그저 취미로 즐길뿐 직업으로는 생각을 못했었습니다.
+            <br><br>그래서 긴 고민 의 끝에 다른 전공으로 가기도했지만 저의 적성과는 맞질 않아 큰 후회를 하게 됬습니다.<br><br>
+            그러다가 어렸던 저의 옛모습이 생각이났기에 다시한번 꿈을 가지고 다시 되볼어보며,
+            <br>결국 내가 하고싶은 직업으로 삼기로 마음을 다짐하여 이렇게 시작합니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3">
+        <h3 id="card-header" class="card-header">진행한 프로젝트</h3>
+        <div class="card-body">
+          <div class="card mb-3" style="max-width: 800px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style="max-width: 800px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style="max-width: 800px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style="max-width: 800px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 주소 및 스킬 -->
+      <div class="row row-cols-1 row-cols-md-2 g-4 mt-3">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span class="sr-only">Location:</span>Seoul, KR</li>
+                <li><br>
+                  <i class="fas fa-envelope"></i>
+                  <span class="sr-only">Email:</span>
+                  <a href="#">pig4396@naver.com</a>
+                </li><br>
+                <li>
+                  <i class="fa-sharp fa-solid fa-globe"></i>
+                  <span class="sr-only">Github:</span>
+                  <a href="#">https://github.com/khh544</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-unstyled">
+                <li><br>
+                  <i class="fa-sharp fa-solid fa-truck-fast"></i>
+                  <span class="sr-only">자격증:</span>
+                  <a href="#">자동차 운전면허 1종 보통</a>
+                </li><br>
+                <li>
+                  <i class="fa-sharp fa-solid fa-crosshairs"></i>
+                  <span class="sr-only">군대:</span>
+                  <a href="#">군대 5사단 27연대 만기전역</a>
+                </li><br>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <h3 id="card-header" class="card-header">스킬</h3>
+            <div class="card-body">
+              <p class="intro">
+                Intro about your skills goes here. Keep the list lean and only show your primary skillset. You can always provide a link to your Linkedin or Github profile so people can get more info there.</p>
+
+              <div class="skillset">
+
+                <div class="item">
+                  <h5 id="level-title">Python &amp; Django<span class="level-label" data-bs-toggle="tooltip" data-bs-placement="left" title="You can use the tooltip to explain more about your skill level...">
+                      <i class="fas fa-info-circle"></i>Expert</span></h5>
+
+                  <div class="level-bar progress">
+                    <div class="progress-bar level-bar-inner" role="progressbar" style="width: 96%" aria-valuenow="96" aria-valuemin="0" aria-valuemax="96"></div>
+                  </div>
+                  <!--//level-bar-->
+                </div>
+                <!--//item-->
+
+                <div class="item">
+                  <h5 id="level-title">Javascript &amp; jQuery<span class="level-label" data-bs-toggle="tooltip" data-bs-placement="left" title="You can use the tooltip to explain more about your skill level...">
+                      <i class="fas fa-info-circle"></i>Expert</span></h5>
+                  <div class="level-bar progress">
+                    <div class="progress-bar level-bar-inner" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="94"></div>
+                  </div>
+                  <!--//level-bar-->
+                </div>
+                <!--//item-->
+
+                <div class="item">
+                  <h5 id="level-title">HTML5, CSS3, SASS &amp; LESS<span class="level-label" data-bs-toggle="tooltip" data-bs-placement="left" title="You can use the tooltip to explain more about your skill level...">
+                      <i class="fas fa-info-circle"></i>Expert</span></h5>
+                  <div class="level-bar progress">
+                    <div class="progress-bar level-bar-inner" role="progressbar" style="width: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="96"></div>
+                  </div>
+                  <!--//level-bar-->
+                </div>
+                <!--//item-->
+
+                <div class="item">
+                  <h5 id="level-title">Ruby on Rails<span class="level-label" data-bs-toggle="tooltip" data-placement="left" title="You can use the tooltip to explain more about your skill level...">
+                      <i class="fas fa-info-circle"></i>Pro</span></h5>
+                  <div class="level-bar progress">
+                    <div class="progress-bar level-bar-inner" role="progressbar" style="width: 86%" aria-valuenow="86" aria-valuemin="0" aria-valuemax="96"></div>
+                  </div>
+                  <!--//level-bar-->
+                </div>
+                <!--//item-->
+                <br>
+                <p>
+                  <a class="more-link" href="#">
+                    <i class="fas fa-external-link-alt"></i>More on GitHub</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <h3 id="card-header" class="card-header">학업</h3>
+            <div class="card-body">
+              <div class="item">
+                <h5 class="title">
+                  <i class="fas fa-graduation-cap"></i>
+                  여주 대학교</h5>
+                <h6 class="university">항공정비과
+                  <span class="year">(2017-2022)</span></h6>
+              </div><br>
+              <div class="item">
+                <h5 class="title">
+                  <i class="fas fa-graduation-cap"></i>
+                  [스마트훈련]AI 엔지니어 부트캠프</h5>
+                <h6 class="university">수료
+                  <span class="year">(22.06-22.12)</span></h6>
+              </div>
+              <!--//item-->
+            </div>
+          </div>
+          <div class="card mt-2">
+            <h3 id="card-header" class="card-header">언어</h3><br>
+            <ul class="list-unstyled" style="padding:0px 15px">
+              <li class="item">
+                <span class="title">
+                  <i class="fa-sharp fa-solid fa-language"></i>
+                  <strong>한국어</strong>
+                </span>
+                <span class="level">
+                  <br class="visible-xs"/>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </span>
+              </li>
+              <!--//item-->
+              <li class="item">
+                <span class="title">
+                  <i class="fa-sharp fa-solid fa-language"></i>
+                  <strong>영어</strong>
+                </span>
+                <span class="level">
+                  <br class="visible-sm visible-xs"/>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half"></i>
+                </span>
+              </li>
+              <li class="item">
+                <span class="title">
+                  <i class="fa-sharp fa-solid fa-language"></i>
+                  <strong>일본어</strong>
+                </span>
+                <span class="level">
+                  <br class="visible-sm visible-xs"/>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half"></i>
+                </span>
+              </li>
+              <!--//item-->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2 g-4 mt-3">
+        <div class="col">
+          <div class="card">
+            <h3 id="card-header" class="card-header">나만의 명언</h3><br>
+            <div class="item" style="padding: 20px 20px">
+              <blockquote class="quote">
+                <p>
+                  <i class="fa-sharp fa-solid fa-quote-left"></i>
+                  포기하는 그 순간이 바로, 시합 종료에요
+                  <i class="fa-sharp fa-solid fa-quote-right"></i>
+                </p>
+              </blockquote>
+              <p class="source">
+                <span class="name">안선생</span><br/>
+                <span class="title">
+                  <i class="fa-sharp fa-solid fa-basketball"></i>-슬램덩크</span></p>
+            </div>
+            <!--//item-->
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <h3 id="card-header" class="card-header">자주 듣는 음악</h3><br>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-headphones"></i>
+                  <a href="https://youtu.be/QiQKOevyfBc">Rammstein - Zeit</a>
+                </li>
+                <li>
+                  <i class="fas fa-headphones"></i>
+                  <a href="https://youtu.be/a7b84bCu9zI">Amon Amarth - The Great Heathen Army</a>
+                </li>
+                <li>
+                  <i class="fas fa-headphones"></i>
+                  <a href="https://youtu.be/voG1oJXXZUE">Stratovarius - Survive</a>
+                </li>
+                <li>
+                  <i class="fas fa-headphones"></i>
+                  <a href="https://youtu.be/cDdvMnu5RoQ">Architects - For Those That Wish to Exist</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-5">
+        <h5 id="card-header" class="card-header">My GitHub</h5>
+        <div class="card-body">
+          <p>You can embed your GitHub contribution graph calendar using IonicaBizau's
+            <a href="https://github.com/IonicaBizau/github-calendar" target="_blank">GitHub Calendar</a>
+            widget.
+
+            <div id="github-graph" class="github-graph"></div>
+            <!--//github-graph-->
+
+            <p>You can also embed your GitHub activities using Casey Scarborough's
+              <a href="https://github.com/caseyscarborough/github-activity" target="_blank">GitHub Activity Stream</a>
+              widget.
+              <!--//Usage: https://caseyscarborough.com/projects/github-activity/ -->
+              <div id="ghfeed" class="ghfeed"></div>
+              <!--//ghfeed-->
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer text-center py-2 theme-bg-dark">
+          <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+          <small class="copyright">Designed with
+            <span class="sr-only">love</span>
+            <i class="fas fa-heart" style="color: #fb866a"></i>
+            by
+            <a href="https://github.com/khh544" target="_blank">김현수</a>
+            for developers</small>
+        </footer>
+      </div>
+    {% endblock content %}
+    {% block style %}
+      <script type="text/javascript">
+        function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+            var cookies = document
+              .cookie
+              .split(';');
+            for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+              }
+            }
+          }
+          return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+
+        var cssFile = "{% static 'css' %}"
+
+        function swapStyles(sheet) {
+          document
+            .getElementById('mystylesheet')
+            .href = cssFile + '/' + sheet
+          localStorage.setItem('theme', sheet)
+
+          updateTheme(sheet)
+        }
+
+        function loadSettings() {
+          //Call data and set local storage
+
+          var url = "{% url 'user_settings' %}"
+          fetch(url, {
+            method: 'GET',
+            headers: {
+              'Content-type': 'application/json'
+            }
+          })
+            .then((response) => response.json())
+            .then(function (data) {
+
+              console.log('Data:', data)
+
+              var theme = data.value;
+
+              if (theme == 'light.css' || null) {
+                swapStyles('light.css')
+              } else if (theme == 'dark.css') {
+                swapStyles('dark.css')
+              }
+
+            })
+
+        }
+
+        loadSettings()
+
+        function updateTheme(theme) {
+          var url = "{% url 'update_theme' %}"
+          fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json',
+              'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({'theme': theme})
+          })
+        }
+      </script>
+      <script type="text/javascript" src="static/plugins/vanilla-rss/dist/rss.global.min.js"></script>
+      <!-- github calendar plugin -->
+      <script type="text/javascript" src="static/plugins/github-calendar/dist/github-calendar.min.js"></script>
+      <!-- github activity plugin -->
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+      <script type="text/javascript" src="static/plugins/github-activity/src/github-activity.js"></script>
+      <!-- custom js -->
+      <script type="text/javascript" src="static/js/main.js"></script>
+    {% endblock style %}
+
+  </html>
