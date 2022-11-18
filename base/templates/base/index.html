@@ -35,9 +35,14 @@
 
     <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
     <link rel="stylesheet" href="{% static 'css/github-calendar-responsive.css' %}"/>
+    {% block style %}
+      body { background-image :
+      {% static 'images/noul.png' %}; }
+    {% endblock style %}
+
   </head>
 
-</head>
+</html>
 
 {% block content %}
   <div class="container">
