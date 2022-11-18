@@ -11,7 +11,7 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
     <!-- FontAwesome JS -->
-    <script defer="defer" src="static/fontawesome/js/all.js"></script>
+    <script defer="defer" src="{% static 'fontawesome/js/all.js' %}"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -25,22 +25,16 @@
     <link rel="stylesheet" href="static/plugins/bootstrap/css/bootstrap.min.css"/>
 
     <link id="mystylesheet" rel="stylesheet" type="text/css" href="{% static 'css/light.css' %}">
-    <link id="theme-style" rel="stylesheet" href="static/css/theme-1.css"/>
+    <link id="theme-style" rel="stylesheet" href="{% static 'css/theme-1.css' %}"/>
 
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="static/css/styles.css"/>
-
-    <link rel="stylesheet" href="https://unpkg.com/octicons@4.4.0/build/font/octicons.css">
-    <link rel="stylesheet" href="https://unpkg.com/github-activity-feed@latest/dist/github-activity.min.css">
-
-    <script type="text/javascript" src="https://unpkg.com/mustache@4.2.0/mustache.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/github-activity-feed@latest/dist/github-activity.min.js"></script>
+    <link id="theme-style" rel="stylesheet" href="{% static 'css/styles.css' %}"/>
 
     <!-- Include the library. -->
-    <script src="static/css/github-calendar.min.js"></script>
+    <script src="{% static 'js/github-calendar.min.js' %}"></script>
 
     <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
-    <link rel="stylesheet" href="static/css/github-calendar-responsive.css"/>
+    <link rel="stylesheet" href="{% static 'css/github-calendar-responsive.css' %}"/>
   </head>
 
 </head>
@@ -446,115 +440,110 @@
       <div class="card mt-5">
         <h5 id="card-header" class="card-header">My GitHub</h5>
         <div class="card-body">
-          <p>You can embed your GitHub contribution graph calendar using IonicaBizau's
+          <p>당신은 IonicaBizau 의
             <a href="https://github.com/IonicaBizau/github-calendar" target="_blank">GitHub Calendar</a>
-            widget.
+            위젯을 응용할수있습니다.
 
-            <div id="github-graph" class="github-graph"></div>
+            <div id="calendar" class="calendar"></div>
             <!--//github-graph-->
-
-            <p>You can also embed your GitHub activities using Casey Scarborough's
-              <a href="https://github.com/caseyscarborough/github-activity" target="_blank">GitHub Activity Stream</a>
-              widget.
-              <!--//Usage: https://caseyscarborough.com/projects/github-activity/ -->
-              <div id="ghfeed" class="ghfeed"></div>
-              <!--//ghfeed-->
-            </div>
           </div>
         </div>
-
-        <footer class="footer text-center py-2 theme-bg-dark">
-          <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-          <small class="copyright">Designed with
-            <span class="sr-only">love</span>
-            <i class="fas fa-heart" style="color: #fb866a"></i>
-            by
-            <a href="https://github.com/khh544" target="_blank">김현수</a>
-            for developers</small>
-        </footer>
       </div>
-    {% endblock content %}
-    {% block style %}
-      <script type="text/javascript">
-        function getCookie(name) {
-          var cookieValue = null;
-          if (document.cookie && document.cookie !== '') {
-            var cookies = document
-              .cookie
-              .split(';');
-            for (var i = 0; i < cookies.length; i++) {
-              var cookie = cookies[i].trim();
-              // Does this cookie string begin with the name we want?
-              if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-              }
+
+      <footer class="footer text-center py-2 theme-bg-dark">
+        <small class="copyright">Designed with
+          <span class="sr-only">love</span>
+          <i class="fas fa-heart" style="color: #fb866a"></i>
+          by
+          <a href="https://github.com/khh544" target="_blank">김현수</a>
+          for developers</small>
+      </footer>
+    </div>
+  {% endblock content %}
+  {% block style %}
+    <script type="text/javascript">
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document
+            .cookie
+            .split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
             }
           }
-          return cookieValue;
         }
-        var csrftoken = getCookie('csrftoken');
+        return cookieValue;
+      }
+      var csrftoken = getCookie('csrftoken');
 
-        var cssFile = "{% static 'css' %}"
+      var cssFile = "{% static 'css' %}"
 
-        function swapStyles(sheet) {
-          document
-            .getElementById('mystylesheet')
-            .href = cssFile + '/' + sheet
-          localStorage.setItem('theme', sheet)
+      function swapStyles(sheet) {
+        document
+          .getElementById('mystylesheet')
+          .href = cssFile + '/' + sheet
+        localStorage.setItem('theme', sheet)
 
-          updateTheme(sheet)
-        }
+        updateTheme(sheet)
+      }
 
-        function loadSettings() {
-          //Call data and set local storage
+      function loadSettings() {
+        //Call data and set local storage
 
-          var url = "{% url 'user_settings' %}"
-          fetch(url, {
-            method: 'GET',
-            headers: {
-              'Content-type': 'application/json'
+        var url = "{% url 'user_settings' %}"
+        fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json'
+          }
+        })
+          .then((response) => response.json())
+          .then(function (data) {
+
+            console.log('Data:', data)
+
+            var theme = data.value;
+
+            if (theme == 'light.css' || null) {
+              swapStyles('light.css')
+            } else if (theme == 'dark.css') {
+              swapStyles('dark.css')
             }
+
           })
-            .then((response) => response.json())
-            .then(function (data) {
 
-              console.log('Data:', data)
+      }
 
-              var theme = data.value;
+      loadSettings()
 
-              if (theme == 'light.css' || null) {
-                swapStyles('light.css')
-              } else if (theme == 'dark.css') {
-                swapStyles('dark.css')
-              }
+      function updateTheme(theme) {
+        var url = "{% url 'update_theme' %}"
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+            'X-CSRFToken': csrftoken
+          },
+          body: JSON.stringify({'theme': theme})
+        })
+      }
+      GitHubCalendar(".calendar", "khh544");
 
-            })
+      // or enable responsive functionality:
+      GitHubCalendar(".calendar", "khh544", {responsive: true});
 
+      // Use a proxy
+      GitHubCalendar(".calendar", "khh544", {
+        proxy(username) {
+          return fetch(`https://your-proxy.com/github?user=${username}`)
         }
+      }).then(r => r.text())
+    </script>
+  {% endblock style %}
 
-        loadSettings()
-
-        function updateTheme(theme) {
-          var url = "{% url 'update_theme' %}"
-          fetch(url, {
-            method: 'POST',
-            headers: {
-              'Content-type': 'application/json',
-              'X-CSRFToken': csrftoken
-            },
-            body: JSON.stringify({'theme': theme})
-          })
-        }
-      </script>
-      <script type="text/javascript" src="static/plugins/vanilla-rss/dist/rss.global.min.js"></script>
-      <!-- github calendar plugin -->
-      <script type="text/javascript" src="static/plugins/github-calendar/dist/github-calendar.min.js"></script>
-      <!-- github activity plugin -->
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
-      <script type="text/javascript" src="static/plugins/github-activity/src/github-activity.js"></script>
-      <!-- custom js -->
-      <script type="text/javascript" src="static/js/main.js"></script>
-    {% endblock style %}
-
-  </html>
+</html>
