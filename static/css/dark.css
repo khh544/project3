@@ -1,5 +1,8 @@
 body{
-	/* background-color: rgb(36, 41, 46) !important; */
+	background-color: rgb(36, 41, 46) !important;
+}
+
+#back{
 	background-image: url("https://cdn.pixabay.com/photo/2019/08/19/15/13/eiffel-tower-4416700__340.jpg");
 }
 
