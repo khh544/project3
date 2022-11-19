@@ -141,7 +141,7 @@
     </section>
     <div id="back" class="container">
       <div class="card mt-3">
-        <img src="/static/images/profile2.jpeg" class="img-fluid" alt="프로파일">
+        <img src="{% static 'images/profile2.jpeg' %}" class="img-fluid" alt="프로파일">
         <h3 id="card-header" class="card-header">나의 대해서</h3>
         <div class="card-body">
           <div class="card-text">저는 어렸을때부터, 게임모드 및 개발에 흥미를 두고있었습니다.
@@ -160,14 +160,15 @@
           <div class="card mb-3" style="max-width: 800px;">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
+                <img src="{% static 'images/project/project1.png' %}" class="img-fluid rounded-start" alt="첫 단체프로젝트">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title">H 쇼핑몰 분석</h5>
+                  <p class="card-text">H쇼핑몰 분석을 진행하였습니다.<br>
+                    제가 맡은 부분은 성별에따른 매출 특징을 분석을 하였습니다.<br>사용 라이브러리: Pandas,Seaborn,Matplotlib,numpy 사용</p>
                   <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
+                    <small class="text-muted">2022.07.24 ~ 2022.07.28</small>
                   </p>
                 </div>
               </div>
