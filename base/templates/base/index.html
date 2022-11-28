@@ -35,9 +35,10 @@
 
     <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
     <link rel="stylesheet" href="{% static 'css/github-calendar-responsive.css' %}"/>
+
   </head>
 
-</head>
+</html>
 
 {% block content %}
   <div class="container">
@@ -105,7 +106,7 @@
     </header>
   </div>
   <div class="main-wrapper">
-    <section class="bars cta-section theme-bg-light py-5">
+    <section id="back" class="bars cta-section theme-bg-light py-5">
       <div class="container text-center single-col-max-width">
         <h2 class="heading">나만의 개발 포트폴리오</h2>
         <div class="intro">
@@ -128,9 +129,9 @@
       </div>
       <!--//container-->
     </section>
-    <div class="container">
+    <div id="back" class="container">
       <div class="card mt-3">
-        <img src="/static/images/profile2.jpeg" class="img-fluid" alt="프로파일">
+        <img src="{% static 'images/profile2.jpeg' %}" class="img-fluid" alt="프로파일">
         <h3 id="card-header" class="card-header">나의 대해서</h3>
         <div class="card-body">
           <div class="card-text">저는 어렸을때부터, 게임모드 및 개발에 흥미를 두고있었습니다.
@@ -149,14 +150,73 @@
           <div class="card mb-3" style="max-width: 800px;">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
+                <img src="{% static 'images/project/project1.png' %}" class="img-fluid rounded-start mt-5" alt="첫 단체프로젝트">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title">H 쇼핑몰 분석</h5>
+                  <p class="card-text">H쇼핑몰 분석을 진행하였습니다.<br><br>
+                    - 매출을 중심으로 유의미한 정보를 탐색<br>
+                    - 다른 관점에서 회원 데이터를 기반으로 가입자 수의 중요성(매출 변화)에 대해 분석<br>
+                    - 분석한 정보를 토대로 앞으로 매출을 늘리기 위한 전략을 설정<br>
+                    - 결과 및 인사이트 도출
+
+                    <br><br>사용 라이브러리:<br>
+                    <a href="#">Pandas Seaborn Matplotlib numpy etc..</a>
+                  </p>
+                  <a href="https://github.com/khh544/shopingAnalysis" target="_blank">GitHub 보러가기</a>
                   <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
+                    <small id="text-muted" class="text-muted">2022.07.24 ~ 2022.07.28</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style="max-width: 800px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'images/project/project2.png' %}" class="img-fluid rounded-start mt-5" alt="두번째 단체프로젝트">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">텍스트 데이터를 통한 게임 평판 분석</h5>
+                  <p class="card-text">텍스트 데이터를 통해 게임 평판을 분석하였습니다.<br><br>
+                    - 기초 데이터 조사 및 검색을 통한 데이터 크롤링<br>
+                    - 키워드를 빈도에 따라 분류/분석<br>
+                    - 키워드 지표 및 워드클라우드를 통한 경향 분석<br>
+                    - NC소프트의 게임들의 주요 문제점들을 지표간 비교를 통해 분석<br>
+                    - 타 흥행 게임의 본석과 비교 및 비즈니스 인사이트 도출<br><br>사용 라이브러리:<br>
+                    <a href="#">Pandas numpy Pykomoran Gensim PyLDAvis Matplotlib etc..
+                    </a>
+                  </p>
+                  <a href="https://github.com/khh544/gameAnalysis" target="_blank">GitHub 보러가기</a>
+                  <p class="card-text">
+                    <small id="text-muted" class="text-muted">2022.07.29 ~ 2022.08.03</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style="max-width: 800px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'images/project/project3.png' %}" class="img-fluid rounded-start mt-5" alt="세번째 단체프로젝트">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">영화 감성분석을 통한 개봉 영화 흥행 예측</h5>
+                  <p class="card-text">영화 감성분석을 통한 개봉 영화 흥행 예측을 분석하였습니다.<br><br>
+                    - 네이버 영화(학습시킬 데이터, 검증을 위한 데이터)에 대한 리뷰 댓글 수집<br>
+                    - 유튜브 를 통해 개봉할 영화 Teaser나 영상에 대한 댓글 수집<br>
+                    - 학습시킬 모델에 사용될 네이버 영화 데이터 분석<br>
+                    - 학습된 모델을 통한 유튜브 영화 Teaser 댓글 분석 수행 및 시각화 출력<br>
+                    - 분석 결과를 토대로 한 결과 도출(모델을 통한 예측자료, 시각화 자료)<br><br>
+                    사용 라이브러리:<br>
+                    <a href="#">Pandas bs4 tqdm sklearn numpy kkonlpy Matplotlib etc..</a>
+                  </p>
+                  <a href="https://github.com/khh544/movieAnalysis-" target="_blank">GitHub 보러가기</a>
+                  <p class="card-text">
+                    <small id="text-muted" class="text-muted">2022.08.04 ~ 2022.08.11</small>
                   </p>
                 </div>
               </div>
@@ -172,39 +232,7 @@
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-3" style="max-width: 800px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-3" style="max-width: 800px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
+                    <small id="text-muted" class="text-muted">Last updated 3 mins ago</small>
                   </p>
                 </div>
               </div>
@@ -430,11 +458,11 @@
       <div class="card mt-5">
         <h5 id="card-header" class="card-header">My GitHub</h5>
         <div class="card-body">
-          <p>당신은 IonicaBizau 의
-            <a href="https://github.com/IonicaBizau/github-calendar" target="_blank">GitHub Calendar</a>
-            위젯을 응용할수있습니다.
 
-            <div id="calendar" class="calendar"></div>
+          <div id="calendar" class="calendar"></div>
+          <p>IonicaBizau 의
+            <a href="https://github.com/IonicaBizau/github-calendar" target="_blank">GitHub Calendar</a>
+            위젯을 응용했습니다.
 
             <!--//github-graph-->
           </div>

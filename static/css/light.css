@@ -2,6 +2,12 @@ body{
 	background-color: #fff;
 }
 
+#back{
+	background-image: url("https://i.redd.it/rmu9h0ikfjf41.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
 h1, h2, h3, h4, h5, h6{
 	color: black;
 }
