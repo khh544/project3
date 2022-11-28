@@ -36,9 +36,9 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-# ALLOWED_HOSTS = ['kimhyunsoo.pythonanywhere.com']
+ALLOWED_HOSTS = ['kimhyunsoo.pythonanywhere.com']
 
 
 # Application definition
@@ -138,9 +138,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = "/home/kimhyunsoo/project3/static"
+STATIC_ROOT = "/home/kimhyunsoo/project3/static"
 
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 STATIC_URL = '/static/'
