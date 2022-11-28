@@ -138,3 +138,7 @@ hr{
     display: block;
     color: rgb(255, 255, 255);
 }
+
+#text-muted {
+	color: #c9c9c9;
+}
